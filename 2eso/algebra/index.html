@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Examen de Álgebra - 2º ESO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      /* CONFIGURACIÓN BASE ESTILO ACADÉMICO */
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #e2e8f0;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 1fr;
+        margin: 0;
+        min-height: 100vh;
+        padding: 20px 0;
+        place-items: center;
+      }
+
+      .slide-container {
+        align-items: center;
+        background-color: #f3f0df; /* Color Crema */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        font-family: "DM Sans", sans-serif;
+        height: 720px;
+        justify-content: center;
+        overflow: hidden;
+        padding: 60px;
+        position: relative;
+        width: 1280px;
+        border-top: 15px solid #005088; /* Detalle Azul */
+      }
+
+      /* TIPOGRAFÍA */
+      h1,
+      h2,
+      h3 {
+        color: #005088;
+        font-family: "Merriweather", serif;
+        margin: 0;
+      }
+      h1 {
+        font-size: 80px;
+        text-align: center;
+      }
+      .slide-title {
+        font-size: 42px;
+        font-weight: 700;
+        margin-bottom: 40px;
+        text-align: left;
+        width: 100%;
+        border-bottom: 2px solid #005088;
+        padding-bottom: 10px;
+      }
+      p,
+      li,
+      td,
+      th {
+        color: #1a1a1a;
+        font-size: 22px;
+        line-height: 1.4;
+      }
+
+      /* COMPONENTES DE DISEÑO */
+      .content-area {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .two-column {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 40px;
+        width: 100%;
+        align-items: center;
+      }
+
+      .image-wrapper {
+        border: 4px solid #005088;
+        border-radius: 12px;
+        overflow: hidden;
+        height: 400px;
+      }
+      .image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .bullet-list {
+        list-style: none;
+        padding: 0;
+      }
+      .bullet-list li {
+        margin-bottom: 18px;
+        padding-left: 50px;
+        position: relative;
+      }
+      .bullet-list i {
+        color: #11caa0;
+        font-size: 24px;
+        left: 0;
+        position: absolute;
+        top: 4px;
+      }
+
+      #formula-container {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #005088;
+        margin: 10px 0;
+        display: inline-block;
+      }
+
+      .bleed-image-layout {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding: 0;
+        align-items: start;
+      }
+      .bleed-text-side {
+        padding: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+      }
+      .bleed-image-side {
+        height: 720px;
+        width: 100%;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Slide 1: Portada -->
+    <div class="slide-container" id="slide1" style="background-color: #005088">
+      <div class="content-area" style="text-align: center">
+        <h1 style="color: #f3f0df">Examen de Álgebra</h1>
+        <p style="color: #f3f0df; font-size: 32px; margin-top: 20px">
+          Tema 6: Expresiones Algebraicas
+        </p>
+        <p
+          style="
+            color: #11caa0;
+            font-family: &quot;Merriweather&quot;;
+            font-size: 24px;
+          "
+        >
+          2º ESO - Jueves, 5 de marzo
+        </p>
+      </div>
+      <div
+        class="image-wrapper"
+        style="
+          width: 800px;
+          height: 300px;
+          margin-top: 40px;
+          border-color: #11caa0;
+        "
+      >
+        <img
+          src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop"
+          alt="Matemáticas"
+        />
+      </div>
+    </div>
+
+    <!-- Slide 2: Bloque 1 - Contexto -->
+    <div class="slide-container" id="slide2">
+      <div class="section-title-layout" style="text-align: center">
+        <h2 style="font-size: 60px">Bloque 1: Lenguaje Algebraico</h2>
+        <hr
+          style="width: 100px; border: 3px solid #11caa0; margin: 30px auto"
+        />
+        <p style="max-width: 900px; margin: 0 auto; font-size: 26px">
+          Situación: Cinco amigos de 4º de la ESO están recaudando dinero para
+          el viaje de fin de curso.
+        </p>
+      </div>
+    </div>
+
+    <!-- Slide 3: Bloque 1 - Ejercicios -->
+    <div class="slide-container" id="slide3">
+      <h2 class="slide-title">1. El viaje de fin de curso</h2>
+      <div class="content-area">
+        <div class="two-column">
+          <div>
+            <p style="margin-bottom: 25px">
+              Si
+              <b
+                >Ana ha recaudado <math><mi>x</mi></math> euros</b
+              >, expresa algebraicamente lo de sus compañeros:
+            </p>
+            <ul class="bullet-list">
+              <li>
+                <i class="fa-solid fa-user-tag"></i> <b>Bea</b> ha recaudado el
+                doble que Ana.
+              </li>
+              <li>
+                <i class="fa-solid fa-user-tag"></i> <b>Caio</b> ha recaudado 10
+                € más que Bea.
+              </li>
+              <li>
+                <i class="fa-solid fa-user-tag"></i> <b>Dani</b> ha recaudado la
+                tercera parte que Ana.
+              </li>
+              <li>
+                <i class="fa-solid fa-user-tag"></i> <b>Elena</b> ha recaudado 5
+                € menos que Ana.
+              </li>
+              <li>
+                <i class="fa-solid fa-calculator"></i> Si entre los cinco han
+                recaudado <b>195 €</b>, escribe la ecuación completa.
+              </li>
+            </ul>
+          </div>
+          <div class="image-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop"
+              alt="Amigos"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4: Bloque 2 - Operaciones -->
+    <div class="slide-container" id="slide4">
+      <h2 class="slide-title">2. Operaciones con monomios</h2>
+      <div class="content-area">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px">
+          <p>
+            1)
+            <math
+              ><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>·</mo><mn>4</mn><mi>x</mi><mo>=</mo></math>
+          </p>
+          <p>
+            2)
+            <math
+              ><mo>(</mo><mo>-</mo><mn>2</mn><msup><mi>a</mi><mn>3</mn></msup><mo>)</mo><mo>·</mo><mo>(</mo><mn>5</mn><msup><mi>a</mi><mn>2</mn></msup><mo>)</mo><mo>=</mo></math>
+          </p>
+          <p>
+            3)
+            <math
+              ><mo>(</mo><mn>12</mn><msup><mi>x</mi><mn>5</mn></msup><mo>)</mo><mo>:</mo><mo>(</mo><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>)</mo><mo>=</mo></math>
+          </p>
+          <p>
+            4)
+            <math
+              ><mfrac
+                ><mrow
+                  ><mn>20</mn><msup><mi>x</mi><mn>3</mn></msup></mrow
+                ><mrow
+                  ><mn>5</mn><msup><mi>x</mi><mn>3</mn></msup></mrow
+                ></mfrac
+              ><mo>=</mo></math>
+          </p>
+          <p>
+            5)
+            <math
+              ><mo>(</mo><mo>-</mo><mi>x</mi><mo>)</mo><mo>·</mo><mo>(</mo
+              ><mo>-</mo><mn>6</mn><msup><mi>x</mi><mn>2</mn></msup><mo>)</mo><mo>=</mo></math>
+          </p>
+          <p>
+            6)
+            <math
+              ><mo>(</mo><mn>15</mn><mi>a</mi><mi>b</mi><mo>)</mo><mo>:</mo
+              ><mo>(</mo><mn>3</mn><mi>b</mi><mo>)</mo><mo>=</mo></math>
+          </p>
+          <p>
+            7)
+            <math
+              ><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>·</mo><mn>3</mn><mi>x</mi><mo>·</mo
+              ><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo></math>
+          </p>
+          <p>
+            8)
+            <math
+              ><mfrac
+                ><mrow
+                  ><mn>10</mn><msup><mi>a</mi><mn>2</mn></msup><mi>b</mi></mrow
+                ><mrow><mn>2</mn><mi>a</mi></mrow></mfrac
+              ><mo>=</mo></math>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5: Bloque 3 - Reducción -->
+    <div class="slide-container" id="slide5">
+      <h2 class="slide-title">3. Reducir expresiones algebraicas</h2>
+      <div class="content-area">
+        <ul class="bullet-list" style="font-family: monospace; font-size: 26px">
+          <li>
+            a)
+            <math
+              ><mn>5</mn><mi>x</mi><mo>-</mo><mn>8</mn><mi>x</mi><mo>+</mo
+              ><mi>x</mi><mo>=</mo></math>
+          </li>
+          <li>
+            b)
+            <math
+              ><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>5</mn><mi>x</mi><mo>+</mo><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>7</mn><mi>x</mi><mo>=</mo></math>
+          </li>
+          <li>
+            c)
+            <math
+              ><mn>3</mn><mo>(</mo><mi>x</mi><mo>-</mo><mn>5</mn><mo>)</mo
+              ><mo>+</mo><mn>2</mn><mi>x</mi><mo>=</mo></math>
+          </li>
+          <li>
+            d)
+            <math
+              ><mi>x</mi><mo>(</mo><mi>x</mi><mo>+</mo><mn>4</mn><mo>)</mo
+              ><mo>-</mo><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo></math>
+          </li>
+          <li>
+            e)
+            <math
+              ><mn>2</mn><mi>x</mi><mo>(</mo><mi>x</mi><mo>-</mo><mn>3</mn><mo>)</mo><mo>-</mo><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mn>5</mn><mi>x</mi><mo>)</mo><mo>=</mo></math>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Slide 6: Bloque 4 - Productos Notables -->
+    <div class="slide-container" id="slide6">
+      <h2 class="slide-title">4. Productos Notables</h2>
+      <div class="content-area">
+        <div
+          id="formula-container"
+          style="width: 100%; text-align: center; margin-bottom: 30px"
+        >
+          <p><b>Fórmulas de ayuda:</b></p>
+          <div
+            style="
+              display: flex;
+              justify-content: space-around;
+              font-size: 24px;
+            "
+          >
+            <math
+              ><msup
+                ><mrow><mo>(</mo><mi>A</mi><mo>+</mo><mi>B</mi><mo>)</mo></mrow
+                ><mn>2</mn></msup><mo>=</mo><msup><mi>A</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>A</mi><mi>B</mi><mo>+</mo
+              ><msup><mi>B</mi><mn>2</mn></msup></math>
+            <math
+              ><msup
+                ><mrow><mo>(</mo><mi>A</mi><mo>-</mo><mi>B</mi><mo>)</mo></mrow
+                ><mn>2</mn></msup><mo>=</mo><msup><mi>A</mi><mn>2</mn></msup><mo>-</mo><mn>2</mn><mi>A</mi><mi>B</mi><mo>+</mo
+              ><msup><mi>B</mi><mn>2</mn></msup></math>
+            <math
+              ><mo>(</mo><mi>A</mi><mo>+</mo><mi>B</mi><mo>)</mo><mo>(</mo
+              ><mi>A</mi><mo>-</mo><mi>B</mi><mo>)</mo><mo>=</mo
+              ><msup><mi>A</mi><mn>2</mn></msup><mo>-</mo><msup><mi>B</mi><mn>2</mn></msup></math>
+          </div>
+        </div>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            font-size: 26px;
+          "
+        >
+          <p>
+            a)
+            <math
+              ><msup
+                ><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mn>4</mn><mo>)</mo></mrow
+                ><mn>2</mn></msup><mo>=</mo></math>
+          </p>
+          <p>
+            b)
+            <math
+              ><msup
+                ><mrow><mo>(</mo><mi>x</mi><mo>-</mo><mn>3</mn><mo>)</mo></mrow
+                ><mn>2</mn></msup><mo>=</mo></math>
+          </p>
+          <p>
+            c)
+            <math
+              ><mo>(</mo><mi>x</mi><mo>+</mo><mn>5</mn><mo>)</mo><mo>(</mo
+              ><mi>x</mi><mo>-</mo><mn>5</mn><mo>)</mo><mo>=</mo></math>
+          </p>
+          <p>
+            d)
+            <math
+              ><msup
+                ><mrow
+                  ><mo>(</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow
+                ><mn>2</mn></msup><mo>=</mo></math>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 7: Bloque 5 - Detective -->
+    <div class="slide-container bleed-image-layout" id="slide7">
+      <div class="bleed-text-side">
+        <h2 class="slide-title">5. Detective de Errores</h2>
+        <p>Un alumno ha escrito esto en su examen:</p>
+        <div
+          id="formula-container"
+          style="background: #ffcccc; border-color: #ef4444; font-size: 30px"
+        >
+          <math
+            ><msup
+              ><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mn>3</mn><mo>)</mo></mrow
+              ><mn>2</mn></msup><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>9</mn></math>
+        </div>
+        <p style="margin-top: 30px"><b>Tu misión:</b></p>
+        <ul class="bullet-list">
+          <li>
+            <i class="fa-solid fa-magnifying-glass"></i> Explica por qué está
+            mal.
+          </li>
+          <li><i class="fa-solid fa-check"></i> Resuélvelo correctamente.</li>
+        </ul>
+      </div>
+      <img
+        src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=2070&auto=format&fit=crop"
+        alt="Estudio"
+        class="bleed-image-side"
+      />
+    </div>
+
+    <!-- Slide 8: Final -->
+    <div class="slide-container" id="slide8" style="background-color: #11caa0">
+      <h2 style="font-size: 100px; color: #fff">¡Mucha suerte!</h2>
+      <p style="font-size: 30px; color: #fff; margin-top: 20px">
+        Revisa los signos y los exponentes antes de entregar.
+      </p>
+    </div>
+  </body>
+</html>
