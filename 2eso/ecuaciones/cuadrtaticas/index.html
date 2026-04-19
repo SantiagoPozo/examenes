@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tema 7.5: Ecuaciones de Segundo Grado</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #1a202c;
+      }
+      .math-block {
+        background-color: #f7fafc;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        margin: 1rem 0;
+        border-left: 4px solid #2b6cb0;
+      }
+      .example-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+      .exercise-card {
+        border: 1px solid #e2e8f0;
+        padding: 1rem;
+        border-radius: 0.375rem;
+        background: white;
+      }
+      .boss-section {
+        border: 2px solid #2d3748;
+        padding: 2rem;
+        border-radius: 1rem;
+        background-color: #fffaf0;
+      }
+      .step {
+        color: #2c5282;
+        font-weight: bold;
+      }
+      .arrow-split {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin: 1rem 0;
+        font-weight: bold;
+        padding-left: 1rem;
+        border-left: 2px dashed #cbd5e0;
+      }
+      .arrow-item::before {
+        content: "→";
+        margin-right: 0.5rem;
+        color: #2b6cb0;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 p-4 md:p-12">
+    <div class="max-w-4xl mx-auto bg-white p-8 shadow-lg rounded-lg">
+      <header class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-800 mb-2">
+          Tema 7.5: Ecuaciones de Segundo Grado
+        </h1>
+        <p class="text-gray-600 italic">
+          Un enfoque desde la lógica algebraica
+        </p>
+      </header>
+
+      <!-- 1. Recordatorio -->
+      <section class="mb-12">
+        <h2
+          class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-4"
+        >
+          1. Recordatorio
+        </h2>
+        <p class="mb-4">
+          En álgebra, <strong>solo se pueden sumar términos semejantes</strong>.
+          Es decir, monomios que tienen exactamente la misma parte literal.
+        </p>
+        <div class="math-block">
+          <p>✅ \(3x^2 + 5x^2 = 8x^2\) (Son semejantes)</p>
+          <p>
+            ❌ \(x^2 + x \rightarrow\) <strong>NO se puede reducir</strong>. Son
+            de grados distintos.
+          </p>
+          <p>
+            ❌ \(5x^2 - 2 \rightarrow\) <strong>NO se puede reducir</strong>.
+          </p>
+        </div>
+      </section>
+
+      <!-- 2. Ecuaciones del tipo x^2 = k -->
+      <section class="mb-12">
+        <h2
+          class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-4"
+        >
+          2. Ecuaciones del tipo \(x^2 = k\)
+        </h2>
+        <p class="mb-4">
+          Hay \(x^2\) pero no hay \(x\). Muchas ecuaciones que no lo parecen
+          terminan reduciéndose a este tipo.
+        </p>
+
+        <div class="example-grid">
+          <div class="exercise-card">
+            <p class="font-bold mb-2">Resuelta 1:</p>
+            <div class="space-y-2">
+              <p>\(x^2 = 9\)</p>
+              <p>\(x = \pm \sqrt{9}\)</p>
+            </div>
+            <p class="text-center text-green-700 font-bold mt-2">
+              Soluciones: x = 3, x = -3
+            </p>
+          </div>
+          <div class="exercise-card">
+            <p class="font-bold mb-2">Resuelta 2:</p>
+            <div class="space-y-2">
+              <p>\(2x^2 = 32\)</p>
+              <p>\(x^2 = 16 \rightarrow x = \pm \sqrt{16}\)</p>
+            </div>
+            <p class="text-center text-green-700 font-bold mt-2">
+              Soluciones: x = 4, x = -4
+            </p>
+          </div>
+          <div class="exercise-card">
+            <p class="font-bold mb-2">Resuelta 3:</p>
+            <div class="space-y-2">
+              <p>\(x^2 + 1 = 0\)</p>
+              <p>\(x^2 = -1\)</p>
+            </div>
+            <p class="text-center text-red-700 font-bold mt-2 italic">
+              Sin solución real
+            </p>
+          </div>
+          <div class="exercise-card">
+            <p class="font-bold mb-2">Resuelta 4 (Notación simbólica):</p>
+            <div class="space-y-2">
+              <p>\(x^2 - 10 = 0\)</p>
+              <p>\(x^2 = 10\)</p>
+            </div>
+            <p class="text-center text-green-700 font-bold mt-2">
+              Soluciones: x = \sqrt{10}, x = -\sqrt{10}
+            </p>
+          </div>
+          <div class="exercise-card">
+            <p class="font-bold mb-2">Resuelta 5 (Fracciones):</p>
+            <div class="space-y-2">
+              <p>\(x^2 = \dfrac{4}{9}\)</p>
+              <p>\(x = \pm \sqrt{\dfrac{4}{9}}\)</p>
+            </div>
+            <p class="text-center text-green-700 font-bold mt-2">
+              Soluciones: x = \dfrac{2}{3}, x = -\dfrac{2}{3}
+            </p>
+          </div>
+          <div class="exercise-card bg-blue-50">
+            <p class="font-bold mb-2">Resuelta 6 (Nivel Pro):</p>
+            <div class="space-y-2">
+              <p>\(\dfrac{3}{2}x^2 - \dfrac{2}{3} = 0\)</p>
+              <p>
+                \(\dfrac{3}{2}x^2 = \dfrac{2}{3} \rightarrow x^2 = \dfrac{2
+                \cdot 2}{3 \cdot 3} = \dfrac{4}{9}\)
+              </p>
+              <p>\(x = \pm \sqrt{\dfrac{4}{9}}\)</p>
+            </div>
+            <p class="text-center text-green-700 font-bold mt-2">
+              Soluciones: x = \dfrac{2}{3}, x = -\dfrac{2}{3}
+            </p>
+          </div>
+          <div class="exercise-card">
+            <p class="font-bold">Ejercicio 7:</p>
+            <p>\(x^2 - 25 = 0\)</p>
+          </div>
+          <div class="exercise-card">
+            <p class="font-bold">Ejercicio 8:</p>
+            <p>\(3x^2 = 27\)</p>
+          </div>
+          <div class="exercise-card">
+            <p class="font-bold">Ejercicio 9:</p>
+            <p>\(5x^2 - 20 = 0\)</p>
+          </div>
+          <div class="exercise-card">
+            <p class="font-bold">Ejercicio 10:</p>
+            <p>\(x^2 + 16 = 0\)</p>
+          </div>
+          <div class="exercise-card">
+            <p class="font-bold">Ejercicio 11:</p>
+            <p>\(x^2 = \dfrac{16}{25}\)</p>
+          </div>
+          <div class="exercise-card">
+            <p class="font-bold">Ejercicio 12:</p>
+            <p>\(x^2 = \dfrac{1}{4}\)</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Ecuaciones del tipo ax^2 + bx = 0 -->
+      <section class="mb-12">
+        <h2
+          class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-4"
+        >
+          3. Ecuaciones del tipo \(ax^2 + bx = 0\)
+        </h2>
+        <p class="mb-4">
+          Aquí hay \(x^2\) y hay \(x\), pero no hay un número suelto (término
+          independiente).
+        </p>
+
+        <h3 class="text-xl font-semibold mt-6 mb-2">
+          3.1. Primero tienes que saber esto
+        </h3>
+        <p>
+          Una ecuación como \(x(x - 1) = 0\) se resuelve por lógica: si dos
+          cosas multiplicadas dan cero, una de las dos tiene que ser cero.
+        </p>
+        <div class="math-block">
+          <p>\(x = 0\)</p>
+          <p>\(x - 1 = 0 \rightarrow x = 1\)</p>
+        </div>
+
+        <h3 class="text-xl font-semibold mt-6 mb-2">
+          3.2. Sacar factor común: El viaje de ida y vuelta
+        </h3>
+        <p>Es la operación contraria a la propiedad distributiva.</p>
+        <div class="math-block">
+          <p>
+            <strong>Ida (Distributiva):</strong> \(x(x - 2) \rightarrow x^2 -
+            2x\)
+          </p>
+          <p>
+            <strong>Ida (Distributiva):</strong> \(5x(2x - 3) \rightarrow 10x^2
+            - 15x\)
+          </p>
+          <p>
+            <strong>Ida (Distributiva):</strong> \(3x(x + 4) \rightarrow 3x^2 +
+            12x\)
+          </p>
+          <p>
+            <strong>Ida (Distributiva):</strong> \(x(7 - x) \rightarrow 7x -
+            x^2\)
+          </p>
+        </div>
+        <p>
+          Si vamos de derecha a izquierda, estamos
+          <strong>sacando factor común</strong>:
+        </p>
+        <div class="math-block">
+          <p>\(x^2 - 2x \rightarrow x(x - 2)\)</p>
+          <p>\(10x^2 - 15x \rightarrow 5x(2x - 3)\)</p>
+          <p>\(3x^2 + 12x \rightarrow 3x(x + 4)\)</p>
+        </div>
+
+        <h3 class="text-xl font-semibold mt-6 mb-2">
+          3.3. Resolviendo mediante factor común
+        </h3>
+        <div class="example-grid">
+          <div class="exercise-card">
+            <p class="font-bold mb-2">Resuelta 1:</p>
+            <div class="space-y-1">
+              <p>\(x^2 - 2x = 0\)</p>
+              <p>\(x(x - 2) = 0\)</p>
+              <p>\(x = 0\)</p>
+              <p>\(x - 2 = 0 \rightarrow x = 2\)</p>
+            </div>
+            <p class="text-center text-green-700 font-bold mt-2">
+              Soluciones: x = 0, x = 2
+            </p>
+          </div>
+          <div class="exercise-card">
+            <p class="font-bold mb-2">Resuelta 2:</p>
+            <div class="space-y-1">
+              <p>\(10x^2 - 15x = 0\)</p>
+              <p>\(5x(2x - 3) = 0\)</p>
+              <p>\(5x = 0 \rightarrow x = 0\)</p>
+              <p>\(2x - 3 = 0 \rightarrow x = 1.5\)</p>
+            </div>
+            <p class="text-center text-green-700 font-bold mt-2">
+              Soluciones: x = 0, x = 1.5
+            </p>
+          </div>
+          <div class="exercise-card">
+            <p class="font-bold">Ejercicio 3:</p>
+            <p>\(x^2 + 5x = 0\)</p>
+          </div>
+          <div class="exercise-card">
+            <p class="font-bold">Ejercicio 4:</p>
+            <p>\(3x^2 - 12x = 0\)</p>
+          </div>
+          <div class="exercise-card">
+            <p class="font-bold">Ejercicio 5:</p>
+            <p>\(x^2 = x\)</p>
+          </div>
+          <div class="exercise-card">
+            <p class="font-bold">Ejercicio 6:</p>
+            <p>\(7x^2 + 14x = 0\)</p>
+          </div>
+          <div class="exercise-card">
+            <p class="font-bold">Ejercicio 7:</p>
+            <p>\(x^2 - x = 0\)</p>
+          </div>
+          <div class="exercise-card">
+            <p class="font-bold">Ejercicio 8:</p>
+            <p>\(5x^2 = 10x\)</p>
+          </div>
+          <div class="exercise-card">
+            <p class="font-bold">Ejercicio 9:</p>
+            <p>\(4x^2 - 2x = 0\)</p>
+          </div>
+          <div class="exercise-card">
+            <p class="font-bold">Ejercicio 10 (Nivel pro):</p>
+            <p>\(ax^2 + bx = cx^2 + dx\)</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. The Final Boss -->
+      <section class="boss-section mb-12">
+        <h2
+          class="text-3xl font-bold text-gray-800 border-b-4 border-gray-800 pb-2 mb-6 text-center"
+        >
+          The Final Boss: \(ax^2 + bx + c = 0\)
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4 text-red-700">
+              4.1. Completando cuadrados
+            </h3>
+            <p class="text-sm mb-4">
+              Obliga a razonar y a usar productos notables en sentido inverso.
+            </p>
+            <p class="font-semibold mb-2 italic text-sm">Recuerda:</p>
+            <ul class="text-xs mb-4 list-disc list-inside">
+              <li>\((a + b)^2 = a^2 + 2ab + b^2\)</li>
+              <li>\((a - b)^2 = a^2 - 2ab + b^2\)</li>
+              <li>\((a + b)(a - b) = a^2 - b^2\)</li>
+            </ul>
+            <div class="bg-white p-4 border border-red-200 rounded">
+              <p class="mb-2 font-bold">Ejemplo: \(x^2 - 2x = 3\)</p>
+              <p class="text-xs text-gray-500 mb-2">
+                Añadimos \(+1\) para completar \((x-1)^2\).
+              </p>
+              <p>\(x^2 - 2x + 1 = 3 + 1\)</p>
+              <p>\((x - 1)^2 = 4 \rightarrow x - 1 = \pm\sqrt{4}\)</p>
+              <div class="arrow-split">
+                <div class="arrow-item">\(x - 1 = 2 \rightarrow x = 3\)</div>
+                <div class="arrow-item">\(x - 1 = -2 \rightarrow x = -1\)</div>
+              </div>
+              <p class="text-center text-green-700 font-bold mt-2">
+                Soluciones: x = 3, x = -1
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold mb-4 text-blue-700">
+              4.2. Con la fórmula
+            </h3>
+            <div
+              class="bg-blue-900 text-white p-4 rounded text-center text-xl mb-4"
+            >
+              \[x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}\]
+            </div>
+            <p class="font-bold text-sm">Ejemplo: \(x^2 - 5x + 6 = 0\)</p>
+            <ul class="text-xs space-y-2 mt-2">
+              <li>
+                <span class="step">1. Identifica:</span> \(a=1, b=-5, c=6\)
+              </li>
+              <li>
+                <span class="step">2. Sustituye:</span> \(x = \dfrac{5 \pm
+                \sqrt{(-5)^2 - 4 \cdot 1 \cdot 6}}{2 \cdot 1}\)
+              </li>
+              <li>
+                <span class="step">3. Opera:</span> \(x = \dfrac{5 \pm 1}{2}\)
+              </li>
+            </ul>
+            <p class="text-center text-green-700 font-bold mt-4">
+              Soluciones: x = 3, x = 2
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="text-center text-gray-500 text-sm mt-8 border-t pt-4">
+        Matemáticas 2º ESO - El camino hacia el Álgebra Superior
+      </footer>
+    </div>
+  </body>
+</html>
