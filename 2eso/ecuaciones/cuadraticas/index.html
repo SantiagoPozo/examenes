@@ -28,6 +28,22 @@
             margin-right: 0.5rem;
             color: #2b6cb0;
         }
+        /* Estilos para las figuras geométricas proporcionales */
+        .geo-shape {
+            background-color: #ebf8ff;
+            border: 2px solid #2b6cb0;
+            position: relative;
+            margin: 1rem auto;
+            max-width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Diagonal punteada usando gradiente */
+            background-image: linear-gradient(to top right, transparent calc(50% - 1px), #2b6cb0 50%, transparent calc(50% + 1px));
+            background-size: 100% 100%;
+        }
+        .label-b { position: absolute; bottom: -22px; width: 100%; text-align: center; font-size: 0.8rem; font-weight: bold; }
+        .label-h { position: absolute; right: -25px; height: 100%; display: flex; align-items: center; font-size: 0.8rem; font-weight: bold; }
     </style>
 </head>
 <body class="bg-gray-50 p-4 md:p-12">
@@ -246,10 +262,10 @@
                     <div class="exercise-card"><p>2) \(x^2 - 3x + 2 = 0\)</p></div>
                     <div class="exercise-card"><p>3) \(x^2 - 4x + 4 = 0\)</p></div>
                     <div class="exercise-card"><p>4) \(x^2 + x - 2 = 0\)</p></div>
-                    <div class="exercise-card"><p>5) \(x^2 - 2x - 3 = 0\)</p></div>
-                    <div class="exercise-card"><p>6) \(x^2 - 7x + 10 = 0\)</p></div>
-                    <div class="exercise-card"><p>7) \(x^2 + 3x - 10 = 0\)</p></div>
-                    <div class="exercise-card"><p>8) \(2x^2 - 7x + 3 = 0\)</p></div>
+                    <div class="exercise-card"><p>5) \(x^2 - 2x + 1 = 4\)</p></div>
+                    <div class="exercise-card"><p>6) \(x^2 - 10x = -3x - 10\)</p></div>
+                    <div class="exercise-card"><p>7) \(2x^2 + 3x - 5 = x^2 + 5\)</p></div>
+                    <div class="exercise-card"><p>8) \(3x^2 - 7x = x^2 - 3\)</p></div>
                     <div class="exercise-card"><p>9) \(x^2 - 8x + 15 = 0\)</p></div>
                     <div class="exercise-card"><p>10) \(x^2 + 2x - 15 = 0\)</p></div>
                     <div class="exercise-card bg-blue-50 border-blue-200">
@@ -258,6 +274,109 @@
                     <div class="exercise-card bg-blue-50 border-blue-200">
                         <p>12) \(\dfrac{x^2}{3} - \dfrac{x}{3} - 2 = 0\)</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Applications & Mixed Review -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-200 pb-2 mb-4">5. Geometry & Mixed Review</h2>
+            
+            <h3 class="text-xl font-semibold mt-6 mb-2">5.1. Geometry: Finding the diagonal</h3>
+            <p class="mb-8 text-sm text-gray-700">Aplica el Teorema de Pitágoras (\(d^2 = a^2 + b^2\)) para hallar la diagonal de estas figuras. Expresa el resultado como una raíz si no es exacta.</p>
+            <div class="example-grid">
+                <!-- 1) 3x4 -->
+                <div class="exercise-card">
+                    <p class="mb-2 font-bold text-center text-xs">1) Rectángulo \(3 \times 4\)</p>
+                    <div class="geo-shape" style="aspect-ratio: 4/3; width: 80px;">
+                        <div class="label-b">4</div>
+                        <div class="label-h">3</div>
+                    </div>
+                </div>
+                <!-- 2) 5x5 -->
+                <div class="exercise-card">
+                    <p class="mb-2 font-bold text-center text-xs">2) Cuadrado de lado \(5\)</p>
+                    <div class="geo-shape" style="aspect-ratio: 1/1; width: 60px;">
+                        <div class="label-b">5</div>
+                        <div class="label-h">5</div>
+                    </div>
+                </div>
+                <!-- 3) 5x12 -->
+                <div class="exercise-card">
+                    <p class="mb-2 font-bold text-center text-xs">3) Rectángulo \(5 \times 12\)</p>
+                    <div class="geo-shape" style="aspect-ratio: 12/5; width: 120px;">
+                        <div class="label-b">12</div>
+                        <div class="label-h">5</div>
+                    </div>
+                </div>
+                <!-- 4) 8x15 -->
+                <div class="exercise-card">
+                    <p class="mb-2 font-bold text-center text-xs">4) Rectángulo \(8 \times 15\)</p>
+                    <div class="geo-shape" style="aspect-ratio: 15/8; width: 120px;">
+                        <div class="label-b">15</div>
+                        <div class="label-h">8</div>
+                    </div>
+                </div>
+                <!-- 5) 10x10 -->
+                <div class="exercise-card">
+                    <p class="mb-2 font-bold text-center text-xs">5) Cuadrado de lado \(10\)</p>
+                    <div class="geo-shape" style="aspect-ratio: 1/1; width: 60px;">
+                        <div class="label-b">10</div>
+                        <div class="label-h">10</div>
+                    </div>
+                </div>
+                <!-- 6) 7x24 -->
+                <div class="exercise-card">
+                    <p class="mb-2 font-bold text-center text-xs">6) Rectángulo \(7 \times 24\)</p>
+                    <div class="geo-shape" style="aspect-ratio: 24/7; width: 150px;">
+                        <div class="label-b">24</div>
+                        <div class="label-h">7</div>
+                    </div>
+                </div>
+                <!-- 7) 20x21 -->
+                <div class="exercise-card">
+                    <p class="mb-2 font-bold text-center text-xs">7) Rectángulo \(20 \times 21\)</p>
+                    <div class="geo-shape" style="aspect-ratio: 21/20; width: 80px;">
+                        <div class="label-b">21</div>
+                        <div class="label-h">20</div>
+                    </div>
+                </div>
+                <!-- 8) 9x40 -->
+                <div class="exercise-card">
+                    <p class="mb-2 font-bold text-center text-xs">8) Rectángulo \(9 \times 40\)</p>
+                    <div class="geo-shape" style="aspect-ratio: 40/9; width: 180px; max-width: 100%;">
+                        <div class="label-b">40</div>
+                        <div class="label-h">9</div>
+                    </div>
+                </div>
+                <!-- 9) 12x16 -->
+                <div class="exercise-card">
+                    <p class="mb-2 font-bold text-center text-xs">9) Rectángulo \(12 \times 16\)</p>
+                    <div class="geo-shape" style="aspect-ratio: 16/12; width: 100px;">
+                        <div class="label-b">16</div>
+                        <div class="label-h">12</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-semibold mt-10 mb-2">5.2. Mixed Equations Challenge</h3>
+            <p class="mb-4 text-sm text-gray-700">Identifica el tipo de ecuación (incompleta o completa) y resuelve las 12 siguientes:</p>
+            <div class="example-grid">
+                <div class="exercise-card"><p>1) \(x^2 - 100 = 0\)</p></div>
+                <div class="exercise-card"><p>2) \(x^2 - 7x = 0\)</p></div>
+                <div class="exercise-card"><p>3) \(x^2 - 6x + 9 = 0\)</p></div>
+                <div class="exercise-card"><p>4) \(2x^2 = 50\)</p></div>
+                <div class="exercise-card"><p>5) \(3x^2 + 12x = 0\)</p></div>
+                <div class="exercise-card"><p>6) \(x^2 + 4x - 21 = 0\)</p></div>
+                <div class="exercise-card"><p>7) \(x^2 = 6x - 8\)</p></div>
+                <div class="exercise-card"><p>8) \(5x^2 - 20 = 0\)</p></div>
+                <div class="exercise-card"><p>9) \(x^2 + 10x + 25 = 0\)</p></div>
+                <div class="exercise-card"><p>10) \(2x^2 - 5x + 2 = 0\)</p></div>
+                <div class="exercise-card bg-blue-50 border-blue-200">
+                    <p>11) \(\dfrac{x^2}{4} - 4 = 0\)</p>
+                </div>
+                <div class="exercise-card bg-blue-50 border-blue-200">
+                    <p>12) \(\dfrac{x^2}{2} + \dfrac{x}{2} - 3 = 0\)</p>
                 </div>
             </div>
         </section>
