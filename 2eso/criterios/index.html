@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="es" class="h-full bg-slate-900 text-slate-100">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mapa de Criterios - Matemáticas 2º ESO</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: "#f0fdf4",
+                100: "#dcfce7",
+                500: "#22c55e",
+                600: "#16a34a",
+                700: "#15803d",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <!-- Google Fonts Inter -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      /* Personalización de la barra de desplazamiento */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0f172a;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #334155;
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #475569;
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-full flex flex-col font-sans antialiased bg-slate-950 selection:bg-emerald-500 selection:text-white"
+  >
+    <!-- Header -->
+    <header
+      class="border-b border-slate-800 bg-slate-900/60 sticky top-0 backdrop-blur-md z-30 px-4 sm:px-8 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+    >
+      <div>
+        <div class="flex items-center gap-2">
+          <span
+            class="px-2 py-1 text-xs font-semibold bg-emerald-500/10 text-emerald-400 rounded-md border border-emerald-500/20"
+            >Santi - 2º ESO</span
+          >
+          <span class="text-xs text-slate-400"
+            >Herramienta de Seguimiento Personal</span
+          >
+        </div>
+        <h1
+          class="text-xl sm:text-2xl font-bold text-slate-100 tracking-tight mt-1"
+        >
+          Mapa de Criterios e Itinerarios de Recuperación
+        </h1>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <button
+          onclick="copyMarkdown()"
+          class="flex items-center gap-2 px-3 py-2 text-sm font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg transition-colors border border-slate-700"
+        >
+          <svg
+            class="w-4 h-4 text-emerald-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+            ></path>
+          </svg>
+          Exportar Progreso
+        </button>
+        <button
+          onclick="showResetModal()"
+          class="flex items-center gap-2 px-3 py-2 text-sm font-medium bg-slate-900 hover:bg-red-950/40 text-rose-400 rounded-lg transition-colors border border-rose-950/40"
+        >
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+            ></path>
+          </svg>
+          Reiniciar
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main
+      class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-8 py-6 flex flex-col gap-6"
+    >
+      <!-- Info Banner (Explains Recovery Concept cleanly) -->
+      <div
+        class="p-4 rounded-xl bg-slate-900 border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center gap-3"
+      >
+        <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400 shrink-0">
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+        </div>
+        <div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            <strong class="text-emerald-400"
+              >¿Cómo funciona la recuperación automática?</strong
+            >
+            Al superar un criterio de un trimestre posterior que esté conectado
+            (por ejemplo, resolver ecuaciones en el 3er trimestre), se darán por
+            recuperados automáticamente los criterios dependientes anteriores
+            (como la simplificación algebraica del 2º trimestre).
+          </p>
+        </div>
+      </div>
+
+      <!-- Table Card Layout -->
+      <section
+        class="flex flex-col rounded-xl border border-slate-800 bg-slate-900/40 overflow-hidden shadow-xl"
+      >
+        <!-- Table Controls -->
+        <div
+          class="p-4 border-b border-slate-800 bg-slate-900/60 flex flex-col md:flex-row gap-4 items-center justify-between"
+        >
+          <!-- Search Box -->
+          <div class="relative w-full md:w-80">
+            <span
+              class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+            >
+              <svg
+                class="h-4 w-4 text-slate-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                ></path>
+              </svg>
+            </span>
+            <input
+              type="text"
+              id="search-input"
+              oninput="renderTable()"
+              placeholder="Buscar código o contenido..."
+              class="w-full pl-9 pr-4 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-sm text-slate-200 focus:outline-none focus:border-slate-700 placeholder-slate-500"
+            />
+          </div>
+
+          <!-- Quick Filter Tabs -->
+          <div class="flex flex-wrap gap-1.5 w-full md:w-auto">
+            <button
+              onclick="setFilter('ALL')"
+              id="btn-filter-ALL"
+              class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-500 text-white border border-emerald-500 transition-all"
+            >
+              Todos
+            </button>
+            <button
+              onclick="setFilter('T1')"
+              id="btn-filter-T1"
+              class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-800 text-slate-400 hover:text-slate-200 border border-slate-700 transition-all"
+            >
+              1º Trimestre
+            </button>
+            <button
+              onclick="setFilter('T2')"
+              id="btn-filter-T2"
+              class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-800 text-slate-400 hover:text-slate-200 border border-slate-700 transition-all"
+            >
+              2º Trimestre
+            </button>
+            <button
+              onclick="setFilter('T3')"
+              id="btn-filter-T3"
+              class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-800 text-slate-400 hover:text-slate-200 border border-slate-700 transition-all"
+            >
+              3º Trimestre
+            </button>
+            <span
+              class="w-px h-6 bg-slate-800 self-center hidden sm:block mx-1"
+            ></span>
+            <button
+              onclick="setFilter('PENDING')"
+              id="btn-filter-PENDING"
+              class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-800 text-amber-500 hover:text-amber-400 border border-slate-700 transition-all"
+            >
+              Pendientes
+            </button>
+            <button
+              onclick="setFilter('PASSED')"
+              id="btn-filter-PASSED"
+              class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-800 text-emerald-400 hover:text-emerald-300 border border-slate-700 transition-all"
+            >
+              Superados
+            </button>
+          </div>
+        </div>
+
+        <!-- Table Container -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse min-w-[700px]">
+            <thead>
+              <tr class="bg-slate-900/90 border-b border-slate-800">
+                <th
+                  class="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-slate-400 w-24 text-center"
+                >
+                  Estado
+                </th>
+                <th
+                  class="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-slate-400 w-24"
+                >
+                  Criterio
+                </th>
+                <th
+                  class="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-slate-400"
+                >
+                  Contenido / Ejercicios de Referencia
+                </th>
+                <th
+                  class="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-slate-400 w-28 text-center"
+                >
+                  Trimestre
+                </th>
+                <th
+                  class="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-slate-400 w-64"
+                >
+                  Efectos de Recuperación
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              id="table-body"
+              class="divide-y divide-slate-800/60 bg-slate-900/10"
+            >
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Footer Stats -->
+        <div
+          class="p-4 border-t border-slate-800 bg-slate-900/60 flex flex-col sm:flex-row gap-2 justify-between items-center text-xs text-slate-500"
+        >
+          <span id="stat-total">Total: 14 criterios</span>
+          <span id="stat-passed" class="text-emerald-400 font-medium"
+            >Superados: 0 / 14</span
+          >
+          <span class="flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            Progreso interactivo guardado automáticamente
+          </span>
+        </div>
+      </section>
+    </main>
+
+    <!-- Interactive Confirm Reset Modal -->
+    <div
+      id="reset-modal"
+      class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300"
+    >
+      <div
+        class="bg-slate-900 border border-slate-800 rounded-xl max-w-md w-full p-6 shadow-2xl transform scale-95 transition-all duration-300"
+        id="reset-modal-card"
+      >
+        <h3 class="text-lg font-bold text-slate-100">
+          ¿Deseas reiniciar tu progreso?
+        </h3>
+        <p class="text-sm text-slate-400 mt-2 leading-relaxed">
+          Esta acción borrará todas las calificaciones que hayas marcado en tu
+          navegador para volver a empezar de cero con todos los criterios
+          pendientes.
+        </p>
+        <div class="mt-6 flex justify-end gap-3">
+          <button
+            onclick="hideResetModal()"
+            class="px-4 py-2 text-sm font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg transition-colors"
+          >
+            Cancelar
+          </button>
+          <button
+            onclick="confirmReset()"
+            class="px-4 py-2 text-sm font-medium bg-rose-600 hover:bg-rose-500 text-white rounded-lg transition-colors"
+          >
+            Sí, reiniciar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification Banner -->
+    <div
+      id="toast"
+      class="fixed bottom-6 right-6 px-4 py-3 bg-slate-800 border border-slate-700 text-slate-200 font-medium text-sm rounded-lg shadow-2xl opacity-0 translate-y-2 pointer-events-none transition-all duration-300 flex items-center gap-2.5 z-50"
+    >
+      <span
+        class="w-2 h-2 rounded-full bg-emerald-500"
+        id="toast-indicator"
+      ></span>
+      <span id="toast-text">¡Formato de progreso copiado!</span>
+    </div>
+
+    <!-- Script Controller -->
+    <script>
+      // Configuración de ordenación de trimestres (Global para evitar errores de referencia)
+      const TRIMESTRE_ORDER = { T1: 1, T2: 2, T3: 3 };
+
+      /**
+       * =========================================================================
+       * BASE DE DATOS DE CRITERIOS
+       * =========================================================================
+       * - id: Identificador único del criterio
+       * - contenido: Descripción o tareas de referencia
+       * - trimestre: 'T1', 'T2' o 'T3'
+       * - recupera: ID de otro criterio de trimestre anterior al que este recupera (opcional)
+       * - status: Estado por defecto ('Pendiente' o 'Superado')
+       */
+      const defaultCriteria = [
+        {
+          id: "1.2",
+          contenido:
+            "Cálculo mental con fracciones / Operaciones combinadas / Unidades de medida",
+          trimestre: "T1",
+          recupera: "",
+          status: "Pendiente",
+        },
+        {
+          id: "1.3",
+          contenido: "Problemas con números enteros",
+          trimestre: "T1",
+          recupera: "",
+          status: "Pendiente",
+        },
+        {
+          id: "2.1",
+          contenido: "Propiedades de las potencias",
+          trimestre: "T1",
+          recupera: "",
+          status: "Pendiente",
+        },
+        {
+          id: "5.2",
+          contenido: "Divisibilidad (mcm, mcd, primos y compuestos)",
+          trimestre: "T1",
+          recupera: "",
+          status: "Pendiente",
+        },
+        {
+          id: "7.1",
+          contenido: "Representación de fracciones en la recta real",
+          trimestre: "T1",
+          recupera: "",
+          status: "Pendiente",
+        },
+        {
+          id: "1.1",
+          contenido: "Problemas de fracciones (pág. 79)",
+          trimestre: "T2",
+          recupera: "",
+          status: "Pendiente",
+        },
+        {
+          id: "2.1-T2",
+          contenido:
+            "Potencias en fracciones / Producto y cociente de monomios",
+          trimestre: "T2",
+          recupera: "",
+          status: "Pendiente",
+        },
+        {
+          id: "3.1",
+          contenido: "Productos notables",
+          trimestre: "T2",
+          recupera: "",
+          status: "Pendiente",
+        },
+        {
+          id: "4.1",
+          contenido: "Operaciones combinadas con fracciones",
+          trimestre: "T2",
+          recupera: "",
+          status: "Pendiente",
+        },
+        {
+          id: "4.2",
+          contenido: "Traducir y plantear ecuaciones",
+          trimestre: "T2",
+          recupera: "",
+          status: "Pendiente",
+        },
+        {
+          id: "8.2",
+          contenido:
+            "Reducir expresiones algebraicas (págs. 137, 139, 140, 145)",
+          trimestre: "T2",
+          recupera: "",
+          status: "Pendiente",
+        },
+        {
+          id: "3.2",
+          contenido: "Resolver ecuaciones (págs. 160-163)",
+          trimestre: "T3",
+          recupera: "8.2",
+          status: "Pendiente",
+        },
+        {
+          id: "8.1",
+          contenido: "Plantear ecuaciones para problemas",
+          trimestre: "T3",
+          recupera: "4.2",
+          status: "Pendiente",
+        },
+        {
+          id: "8.2-T3",
+          contenido: "Plantear ecuaciones (examen/clase)",
+          trimestre: "T3",
+          recupera: "",
+          status: "Pendiente",
+        },
+      ];
+
+      // Global state
+      let criteriaList = [];
+      let currentFilter = "ALL";
+
+      // Load data from LocalStorage or Fallback to defaults
+      function loadData() {
+        const stored = localStorage.getItem("gestor_criterios_simplificado");
+        if (stored) {
+          try {
+            criteriaList = JSON.parse(stored);
+          } catch (e) {
+            criteriaList = defaultCriteria.map((item) => ({ ...item }));
+          }
+        } else {
+          criteriaList = defaultCriteria.map((item) => ({ ...item }));
+        }
+        saveData();
+      }
+
+      function saveData() {
+        localStorage.setItem(
+          "gestor_criterios_simplificado",
+          JSON.stringify(criteriaList),
+        );
+      }
+
+      // Custom Modal Actions
+      function showResetModal() {
+        const modal = document.getElementById("reset-modal");
+        const card = document.getElementById("reset-modal-card");
+        modal.classList.remove("opacity-0", "pointer-events-none");
+        card.classList.remove("scale-95");
+      }
+
+      function hideResetModal() {
+        const modal = document.getElementById("reset-modal");
+        const card = document.getElementById("reset-modal-card");
+        modal.classList.add("opacity-0", "pointer-events-none");
+        card.classList.add("scale-95");
+      }
+
+      function confirmReset() {
+        criteriaList = defaultCriteria.map((item) => ({ ...item }));
+        saveData();
+        renderTable();
+        hideResetModal();
+        showToast("¡Progreso de calificaciones restablecido!", "amber");
+      }
+
+      function setFilter(filter) {
+        currentFilter = filter;
+
+        // UI tabs visual updating
+        const filterButtons = ["ALL", "T1", "T2", "T3", "PENDING", "PASSED"];
+        filterButtons.forEach((f) => {
+          const btn = document.getElementById(`btn-filter-${f}`);
+          if (!btn) return;
+          if (f === filter) {
+            if (f === "PENDING") {
+              btn.className =
+                "px-3 py-1.5 text-xs font-semibold rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/30 transition-all";
+            } else if (f === "PASSED") {
+              btn.className =
+                "px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 transition-all";
+            } else {
+              btn.className =
+                "px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-500 text-white border border-emerald-500 transition-all";
+            }
+          } else {
+            btn.className =
+              "px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-800 text-slate-400 hover:text-slate-200 border border-slate-700 transition-all";
+          }
+        });
+
+        renderTable();
+      }
+
+      /**
+       * Calculate real-time status of a criterion.
+       * A criterion gets "Recuperado" automatically if:
+       * 1. Its current status is not already "Superado".
+       * 2. There's another criterion in a later trimester whose 'recupera' property points to this item's ID,
+       *    and that subsequent criterion is marked as "Superado".
+       */
+      function getEffectiveStatus(item) {
+        if (item.status === "Superado") {
+          return { label: "Superado", type: "passed" };
+        }
+
+        // Check if there is any posterior criterion that recovers this item
+        const recoverySource = criteriaList.find((source) => {
+          const sourceVal = TRIMESTRE_ORDER[source.trimestre] || 0;
+          const itemVal = TRIMESTRE_ORDER[item.trimestre] || 0;
+
+          return (
+            sourceVal > itemVal &&
+            source.status === "Superado" &&
+            (source.recupera === item.id ||
+              (item.id.includes("-") &&
+                source.recupera === item.id.split("-")[0]))
+          );
+        });
+
+        if (recoverySource) {
+          return {
+            label: `Recuperado por ${recoverySource.id}`,
+            type: "recovered",
+            by: recoverySource.id,
+          };
+        }
+
+        return { label: "Pendiente", type: "pending" };
+      }
+
+      function toggleStatus(id, trimester) {
+        const index = criteriaList.findIndex(
+          (x) => x.id === id && x.trimestre === trimester,
+        );
+        if (index > -1) {
+          criteriaList[index].status =
+            criteriaList[index].status === "Superado"
+              ? "Pendiente"
+              : "Superado";
+          saveData();
+          renderTable();
+
+          // Show dynamic feedback toast
+          if (criteriaList[index].status === "Superado") {
+            showToast(`Criterio ${id} marcado como ¡Superado!`, "emerald");
+          } else {
+            showToast(`Criterio ${id} marcado como Pendiente.`, "slate");
+          }
+        }
+      }
+
+      function renderTable() {
+        const tbody = document.getElementById("table-body");
+        const searchVal = document
+          .getElementById("search-input")
+          .value.toLowerCase();
+        tbody.innerHTML = "";
+
+        // Filter logic
+        let filtered = criteriaList.filter((item) => {
+          const effective = getEffectiveStatus(item);
+          const matchesSearch =
+            item.id.toLowerCase().includes(searchVal) ||
+            item.contenido.toLowerCase().includes(searchVal);
+
+          let matchesFilter = false;
+          if (currentFilter === "ALL") {
+            matchesFilter = true;
+          } else if (currentFilter === "PENDING") {
+            matchesFilter = effective.type === "pending";
+          } else if (currentFilter === "PASSED") {
+            matchesFilter =
+              effective.type === "passed" || effective.type === "recovered";
+          } else {
+            matchesFilter = item.trimestre === currentFilter;
+          }
+
+          return matchesFilter && matchesSearch;
+        });
+
+        // Sort sequence using global TRIMESTRE_ORDER
+        filtered.sort((a, b) => {
+          const orderA = TRIMESTRE_ORDER[a.trimestre] || 99;
+          const orderB = TRIMESTRE_ORDER[b.trimestre] || 99;
+          if (orderA !== orderB) {
+            return orderA - orderB;
+          }
+          return a.id.localeCompare(b.id, undefined, {
+            numeric: true,
+            sensitivity: "base",
+          });
+        });
+
+        if (filtered.length === 0) {
+          tbody.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="px-6 py-12 text-center text-slate-500 text-sm italic">
+                            No se encontraron criterios con los parámetros de búsqueda actuales.
+                        </td>
+                    </tr>
+                `;
+        }
+
+        filtered.forEach((item) => {
+          const effective = getEffectiveStatus(item);
+
+          // Calculate recovery message
+          let recoveryHTML = "—";
+          if (item.recupera) {
+            recoveryHTML = `
+                        <span class="inline-flex items-center gap-1 text-slate-400">
+                            <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                            Recupera al criterio <strong class="text-emerald-400 font-mono">${item.recupera}</strong>
+                        </span>
+                    `;
+          } else {
+            // Check if there is someone else recovering this criterion
+            const source = criteriaList.find(
+              (x) =>
+                x.recupera === item.id || x.recupera === item.id.split("-")[0],
+            );
+            if (source) {
+              recoveryHTML = `
+                            <span class="inline-flex items-center gap-1 text-slate-400">
+                                <svg class="w-3.5 h-3.5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                Recuperable aprobando <strong class="text-sky-400 font-mono">${source.id}</strong>
+                            </span>
+                        `;
+            }
+          }
+
+          // Interactive state column checkbox/icon design
+          let statusBadgeHTML = "";
+          if (effective.type === "passed") {
+            statusBadgeHTML = `
+                        <button onclick="toggleStatus('${item.id}', '${item.trimestre}')" class="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/30 transition-all" title="Calificación directa aprobada. Haz clic para cambiar.">
+                            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                        </button>
+                    `;
+          } else if (effective.type === "recovered") {
+            statusBadgeHTML = `
+                        <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20" title="Recuperado por demostrar competencia en un examen o trimestre posterior (${effective.by}).">
+                            <svg class="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                    `;
+          } else {
+            statusBadgeHTML = `
+                        <button onclick="toggleStatus('${item.id}', '${item.trimestre}')" class="flex items-center justify-center w-8 h-8 rounded-lg bg-slate-950 hover:bg-emerald-500/10 text-transparent hover:text-emerald-400/80 border border-slate-800 hover:border-emerald-500/20 transition-all" title="Haga clic para marcar como superado">
+                            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                        </button>
+                    `;
+          }
+
+          // Color design tags based on trimester
+          const trimLabels = {
+            T1: "bg-slate-800 text-slate-400 border-slate-700/50",
+            T2: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20",
+            T3: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+          };
+
+          const tr = document.createElement("tr");
+          tr.className = `hover:bg-slate-900/40 transition-colors duration-200`;
+          tr.innerHTML = `
+                    <td class="px-6 py-4 text-center">
+                        <div class="flex justify-center">${statusBadgeHTML}</div>
+                    </td>
+                    <td class="px-6 py-4 font-mono text-sm font-bold text-slate-300">${item.id}</td>
+                    <td class="px-6 py-4 text-sm text-slate-300 leading-relaxed">${item.contenido}</td>
+                    <td class="px-6 py-4 text-center">
+                        <span class="px-2.5 py-1 rounded-md text-[10px] font-bold border ${trimLabels[item.trimestre] || ""}">${item.trimestre}</span>
+                    </td>
+                    <td class="px-6 py-4 text-xs">
+                        ${recoveryHTML}
+                    </td>
+                `;
+          tbody.appendChild(tr);
+        });
+
+        // Stats calculation
+        const total = criteriaList.length;
+        const passedCount = criteriaList.filter(
+          (item) => getEffectiveStatus(item).type !== "pending",
+        ).length;
+
+        document.getElementById("stat-total").innerText =
+          `${filtered.length} de ${total} criterios mostrados`;
+        document.getElementById("stat-passed").innerText =
+          `Superados: ${passedCount} / ${total} (${Math.round((passedCount / total) * 100 || 0)}%)`;
+      }
+
+      function copyMarkdown() {
+        let markdown = "### Seguimiento de Progreso de Matemáticas\n\n";
+        markdown +=
+          "| Estado | Criterio | Contenido / Ejercicios | Trimestre | Relación de Recuperación |\n";
+        markdown += "| :---: | :---: | :--- | :---: | :--- |\n";
+
+        let sorted = [...criteriaList].sort((a, b) => {
+          const orderA = TRIMESTRE_ORDER[a.trimestre] || 99;
+          const orderB = TRIMESTRE_ORDER[b.trimestre] || 99;
+          if (orderA !== orderB) {
+            return orderA - orderB;
+          }
+          return a.id.localeCompare(b.id, undefined, { numeric: true });
+        });
+
+        sorted.forEach((item) => {
+          const effective = getEffectiveStatus(item);
+          let statusIcon = "❌ Pendiente";
+          if (effective.type === "passed") statusIcon = "✅ Superado";
+          if (effective.type === "recovered")
+            statusIcon = "⚡ Recuperado (por " + effective.by + ")";
+
+          let recCol = "—";
+          if (item.recupera) {
+            recCol = `Recupera a ${item.recupera}`;
+          } else {
+            const source = criteriaList.find(
+              (x) =>
+                x.recupera === item.id || x.recupera === item.id.split("-")[0],
+            );
+            if (source) {
+              recCol = `Recuperable con ${source.id}`;
+            }
+          }
+          markdown += `| ${statusIcon} | **${item.id}** | ${item.contenido} | ${item.trimestre} | ${recCol} |\n`;
+        });
+
+        // Safe clipboard fallback
+        const textarea = document.createElement("textarea");
+        textarea.value = markdown;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+
+        showToast(
+          "¡Progreso exportado en formato Markdown al portapapeles!",
+          "emerald",
+        );
+      }
+
+      function showToast(message, color = "emerald") {
+        const toast = document.getElementById("toast");
+        const indicator = document.getElementById("toast-indicator");
+        const text = document.getElementById("toast-text");
+
+        text.innerText = message;
+
+        // Adjust indicator color dynamically
+        if (color === "amber") {
+          indicator.className =
+            "w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping";
+        } else if (color === "emerald") {
+          indicator.className = "w-2.5 h-2.5 rounded-full bg-emerald-500";
+        } else {
+          indicator.className = "w-2.5 h-2.5 rounded-full bg-slate-500";
+        }
+
+        toast.classList.remove(
+          "opacity-0",
+          "translate-y-2",
+          "pointer-events-none",
+        );
+        setTimeout(() => {
+          toast.classList.add(
+            "opacity-0",
+            "translate-y-2",
+            "pointer-events-none",
+          );
+        }, 3000);
+      }
+
+      // Initialize application
+      window.onload = function () {
+        loadData();
+        renderTable();
+      };
+    </script>
+  </body>
+</html>
